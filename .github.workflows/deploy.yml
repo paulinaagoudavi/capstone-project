@@ -1,0 +1,28 @@
+name: Deploy Static Website to Azure VM
+
+on:
+  push:
+    branches:
+      - main     # or master, depending on your default branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up SSH key
+      run: |
+        mkdir -p ~/.ssh
+        echo "${{ secrets.AZURE_SSH_KEY }}" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+
+    - name: Add VM to known hosts
+      run: |
+        ssh-keyscan -H ${{ secrets.AZURE_VM_IP }} >> ~/.ssh/known_hosts
+
+    - name: Deploy website files to VM
+      run: |
+        scp -i ~/.ssh/id_rsa -r ./website/* azureuser@${{ secrets.AZURE_VM_IP }}:/var/www/html/
