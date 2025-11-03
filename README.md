@@ -1,11 +1,24 @@
-# Capstone Static Website Deployment
+# Capstone Project: Deploy a Static Website using Azure
 
-This repository contains automation scripts and the static website for the Capstone Project.
-- `deploy_infra.sh` — creates Resource Group, VNet, and Subnets on Azure.
-- `deploy_vm.sh` — (to be added) creates VM(s) and passes cloud-init.
-- `cloud-init.txt` — (to be added) bootstraps the VM to install nginx and pull the website.
-- `website/` — (to be added) folder for index.html, style.css, and assets.
+## Overview
+This project demonstrates how to deploy a **static website** on an **Azure Virtual Machine (Ubuntu)**, automate the setup using shell scripts, and manage source code with **GitHub**.
 
-## Goal
-Deploy a unique static website to an Azure Linux VM using Azure CLI scripts. Document steps and provide screenshots.
+## Architecture
+The infrastructure includes:
+- **Resource Group:** To contain all project resources  
+- **Virtual Network (VNet):** Provides a private network for resources  
+- **Subnets:** Segments the network logically  
+- **Network Security Group (NSG):** Controls inbound and outbound traffic  
+- **Virtual Machine (VM):** Hosts the NGINX web server to serve the static website  
+- **Public IP Address:** Allows external access to the website  
 
+## Tools & Technologies
+- Azure Cloud Shell  
+- Azure CLI  
+- Git & GitHub  
+- NGINX Web Server  
+- Bash Scripting  
+
+## Result
+The website is live and accessible via the VM’s public IP, showing the message:  
+**“Welcome to my Capstone Project — Successfully deployed a static website using Azure Virtual Machine!”**
